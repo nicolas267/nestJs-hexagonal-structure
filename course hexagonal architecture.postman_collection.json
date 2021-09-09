@@ -1,0 +1,124 @@
+{
+	"info": {
+		"_postman_id": "c4cf1e31-ded0-4f33-aa72-85036459a3de",
+		"name": "course hexagonal architecture",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get all courses",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/courses",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"courses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get course by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/courses/{id}",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"courses",
+						"{id}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create course",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"✌️ Vue 3: Novedades aplicadas al mundo real\",\r\n    \"category\": \"frontend\",\r\n    \"description\": \"Veremos cómo exprimir las novedades de Vue 3 con ejemplos reales y aplicando buenas prácticas.\",\r\n    \"image\": \"novedades-vue-3.jpg\",\r\n    \"link\": \"https://pro.codely.tv/library/novedades-vue-3/about/?utm_source=cursos&utm_medium=landing&utm_campaign=internal&utm_content=courses-masonry\",\r\n    \"teachers\": \"Javi y Núria\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:3000/course",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"course"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update course",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"✌️ Vue 3: Novedades aplicadas al mundo real\",\r\n    \"category\": \"frontend\",\r\n    \"description\": \"Veremos cómo exprimir las novedades de Vue 3 con ejemplos reales y aplicando buenas prácticas.\",\r\n    \"image\": \"novedades-vue-3.jpg\",\r\n    \"link\": \"https://pro.codely.tv/library/novedades-vue-3/about/?utm_source=cursos&utm_medium=landing&utm_campaign=internal&utm_content=courses-masonry\",\r\n    \"teachers\": \"Javi y Núria\"\r\n}"
+				},
+				"url": {
+					"raw": "127.0.0.1:3000/course/{id}",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"course",
+						"{id}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "127.0.0.1:3000/course/{id}",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"course",
+						"{id}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
