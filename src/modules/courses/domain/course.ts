@@ -15,7 +15,7 @@ import Teachers from './teachers';
 import Title from './title';
 
 export default class Course implements ICourse {
-  id: Iid['id'];
+  id: Iid;
   title: Ititle;
   category: Icategory;
   description: Idescription;
@@ -32,7 +32,7 @@ export default class Course implements ICourse {
     link: Link,
     teachers: Teachers,
   ) {
-    this.id = id.id;
+    this.id = id;
     this.title = title;
     this.category = category;
     this.description = description;

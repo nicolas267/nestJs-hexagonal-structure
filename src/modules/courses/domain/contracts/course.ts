@@ -7,11 +7,13 @@ import ITeachers from './teachers';
 import ITitle from './title';
 
 export default interface ICourse {
-  id: IId['id'];
+  id: IId;
   title: ITitle;
   category: ICategory;
   description: IDescription;
   image: IImage;
   link: ILink;
   teachers: ITeachers;
+
+  getEntity();
 }
