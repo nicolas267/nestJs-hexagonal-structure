@@ -6,19 +6,19 @@ import {
   Param,
 } from '@nestjs/common';
 import { GetCoursesService } from '../../aplication/get.courses';
-import ICourseEntity from '../../domain/contracts/course';
+import Course from '../../domain/course';
 
 @Controller('courses')
 export class GetCoursesController {
   constructor(private getCoursesService: GetCoursesService) {}
 
   @Get()
-  async findAll(): Promise<ICourseEntity[]> {
+  async findAll(): Promise<Course[]> {
     return this.getCoursesService.getCourses();
   }
 
   @Get(':id')
-  async findById(@Param('id') id: string): Promise<ICourseEntity> {
+  async findById(@Param('id') id: string): Promise<Course> {
     const response = await this.getCoursesService.getCourseById(id);
 
     if (response === undefined) {

@@ -1,6 +1,4 @@
-import IId from './contracts/id';
-
-export default class Id implements IId {
+export default class Id {
   id: string;
 
   constructor(id: string) {

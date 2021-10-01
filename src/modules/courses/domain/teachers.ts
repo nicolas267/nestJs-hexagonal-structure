@@ -1,6 +1,4 @@
-import ITeachers from './contracts/teachers';
-
-export default class Teachers implements ITeachers {
+export default class Teachers {
   teachers: string;
 
   constructor(teachers: string) {

@@ -1,6 +1,4 @@
-import IImage from './contracts/image';
-
-export default class Image implements IImage {
+export default class Image {
   image: string;
 
   constructor(image: string) {

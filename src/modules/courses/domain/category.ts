@@ -1,6 +1,4 @@
-import ICategory from './contracts/category';
-
-export default class Category implements ICategory {
+export default class Category {
   category: string;
 
   constructor(category: string) {

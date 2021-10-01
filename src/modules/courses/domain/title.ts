@@ -1,6 +1,4 @@
-import ITitle from './contracts/title';
-
-export default class Title implements ITitle {
+export default class Title {
   title: string;
 
   constructor(title: string) {

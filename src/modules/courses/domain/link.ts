@@ -1,6 +1,4 @@
-import ILink from './contracts/link';
-
-export default class Link implements ILink {
+export default class Link {
   link: string;
 
   constructor(link: string) {

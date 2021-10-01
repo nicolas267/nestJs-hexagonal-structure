@@ -1,6 +1,4 @@
-import IDescription from './contracts/description';
-
-export default class Description implements IDescription {
+export default class Description {
   description: string;
 
   constructor(description: string) {

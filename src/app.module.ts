@@ -13,6 +13,7 @@ import { CourseDataMapper } from './modules/courses/infrastructure/persistent/da
       username: 'root',
       entities: [CourseDataMapper],
       synchronize: true,
+      logging: true,
     }),
     CoursesModule,
   ],

@@ -1,6 +1,5 @@
 import { InjectRepository } from '@nestjs/typeorm';
 import Category from '../domain/category';
-import ICourse from '../domain/contracts/course';
 import Course from '../domain/course';
 import Description from '../domain/description';
 import Id from '../domain/id';
@@ -22,7 +21,7 @@ export class PostCoursesService extends CoursesService {
     this.repository = mysqlPostRepository;
   }
 
-  create(courseRequest: CourseRequest): Promise<ICourse> {
+  create(courseRequest: CourseRequest): Promise<Course> {
     const course = new Course(
       new Id(null),
       new Title(courseRequest.title),
