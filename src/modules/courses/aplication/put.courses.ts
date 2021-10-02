@@ -1,6 +1,6 @@
 import { HttpException, HttpStatus } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
 import Category from '../domain/category';
+import { ICourseUpdateRepository } from '../domain/contracts/ICourseUpdateRepository';
 import Course from '../domain/course';
 import Description from '../domain/description';
 import Id from '../domain/id';
@@ -8,20 +8,20 @@ import Image from '../domain/image';
 import Link from '../domain/link';
 import Teachers from '../domain/teachers';
 import Title from '../domain/title';
-import { MysqlPutRepository } from '../infrastructure/persistent/mysql.put.repository';
 import { CourseRequest } from '../infrastructure/requests/course.request';
 import CoursesService from './base.service';
 import { GetCoursesService } from './get.courses';
 
 export class PutCoursesService extends CoursesService {
-  private repository;
+  private repository: ICourseUpdateRepository;
+  private coursesService: GetCoursesService;
   constructor(
-    @InjectRepository(MysqlPutRepository)
-    readonly mysqlPutRepository: MysqlPutRepository,
-    readonly getCoursesService: GetCoursesService,
+    repository: ICourseUpdateRepository,
+    getCourseService: GetCoursesService,
   ) {
     super();
-    this.repository = mysqlPutRepository;
+    this.repository = repository;
+    this.coursesService = getCourseService;
   }
 
   async update(
@@ -40,7 +40,7 @@ export class PutCoursesService extends CoursesService {
       new Teachers(courseRequest.teachers),
     );
 
-    const existCourse = await this.getCoursesService.getCourseById(id);
+    const existCourse = await this.coursesService.getCourseById(id);
 
     if (existCourse === undefined) {
       return new HttpException('course not exist', HttpStatus.NOT_FOUND);

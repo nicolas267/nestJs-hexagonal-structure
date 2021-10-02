@@ -7,7 +7,7 @@ import Course from '../../domain/course';
 @Injectable()
 @EntityRepository(CourseDataMapper)
 export class MysqlPutRepository extends Repository<CourseDataMapper> {
-  updateCourse(courseid: id, course: Course): Promise<any> {
-    return this.update(courseid.id, course.getEntity());
+  updateCourse(courseid: id, course: Course): void {
+    this.update(courseid.id, course.getEntity());
   }
 }

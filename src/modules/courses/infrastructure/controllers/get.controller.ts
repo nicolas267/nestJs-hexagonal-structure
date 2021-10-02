@@ -5,20 +5,28 @@ import {
   HttpStatus,
   Param,
 } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
 import { GetCoursesService } from '../../aplication/get.courses';
-import Course from '../../domain/course';
+import { CourseDataMapper } from '../persistent/data-mapper/course.data.mapper';
+import { MysqlGetRepository } from '../persistent/mysql.get.repository';
 
 @Controller('courses')
 export class GetCoursesController {
-  constructor(private getCoursesService: GetCoursesService) {}
+  private getCoursesService: GetCoursesService;
+  constructor(
+    @InjectRepository(MysqlGetRepository)
+    readonly mysqlGetRepository: MysqlGetRepository,
+  ) {
+    this.getCoursesService = new GetCoursesService(mysqlGetRepository);
+  }
 
   @Get()
-  async findAll(): Promise<Course[]> {
+  async findAll(): Promise<CourseDataMapper[]> {
     return this.getCoursesService.getCourses();
   }
 
   @Get(':id')
-  async findById(@Param('id') id: string): Promise<Course> {
+  async findById(@Param('id') id: string): Promise<CourseDataMapper> {
     const response = await this.getCoursesService.getCourseById(id);
 
     if (response === undefined) {

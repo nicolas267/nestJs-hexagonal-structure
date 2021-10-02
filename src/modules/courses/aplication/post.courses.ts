@@ -1,4 +1,3 @@
-import { InjectRepository } from '@nestjs/typeorm';
 import Category from '../domain/category';
 import Course from '../domain/course';
 import Description from '../domain/description';
@@ -7,21 +6,19 @@ import Image from '../domain/image';
 import Link from '../domain/link';
 import Teachers from '../domain/teachers';
 import Title from '../domain/title';
-import { MysqlPostRepository } from '../infrastructure/persistent/mysql.post.repository';
-import { CourseRequest } from '../infrastructure/requests/course.request';
 import CoursesService from './base.service';
+import { CourseDataMapper } from '../infrastructure/persistent/data-mapper/course.data.mapper';
+import { ICourseCreateRepository } from '../domain/contracts/ICourseCreateRepository';
+import { CourseRequest } from '../infrastructure/requests/course.request';
 
 export class PostCoursesService extends CoursesService {
-  private repository;
-  constructor(
-    @InjectRepository(MysqlPostRepository)
-    readonly mysqlPostRepository: MysqlPostRepository,
-  ) {
+  private repository: ICourseCreateRepository;
+  constructor(repository: ICourseCreateRepository) {
     super();
-    this.repository = mysqlPostRepository;
+    this.repository = repository;
   }
 
-  create(courseRequest: CourseRequest): Promise<Course> {
+  create(courseRequest: CourseRequest): Promise<CourseDataMapper> {
     const course = new Course(
       new Id(null),
       new Title(courseRequest.title),

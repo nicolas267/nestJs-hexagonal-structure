@@ -6,11 +6,11 @@ import id from '../../domain/id';
 @Injectable()
 @EntityRepository(CourseDataMapper)
 export class MysqlGetRepository extends Repository<CourseDataMapper> {
-  getAll(): Promise<any[]> {
+  getAll(): Promise<CourseDataMapper[]> {
     return this.find();
   }
 
-  findCourseById(courseId: id): Promise<any> {
+  findCourseById(courseId: id): Promise<CourseDataMapper> {
     return this.findOne(courseId.id);
   }
 }
